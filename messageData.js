@@ -98,3 +98,43 @@ const messageOptions = {
     "A secret you uncover will change the way you see things.",
   ],
 };
+
+let generateRandomNumber = (num) => {
+  return Math.floor(Math.random() * num);
+};
+
+//create an empty array to store the part of the message
+let dailies = [];
+
+//iterate through the object and push the sentence to the new array
+for (let option in messageOptions) {
+  let optionIdx = generateRandomNumber(messageOptions[option].length);
+  switch (option) {
+    case "fate":
+      dailies.push(
+        `Fate, fortune and mystical arts are ever changing, your's today is:\n ${messageOptions[option][optionIdx]}`
+      );
+      break;
+    case "challenges":
+      dailies.push(
+        `Today's daily challenge is:\n ${messageOptions[option][optionIdx]}`
+      );
+      break;
+    case "songNames":
+      dailies.push(
+        `Today's $uicideBoy$ song is:\n ${messageOptions[option][optionIdx]}`
+      );
+      break;
+    default:
+      dailies.push(`Not enough data`);
+      break;
+  }
+}
+
+//format the message
+let styleIt = (message) => {
+  const styled = dailies.join(`\n`);
+  console.log(styled);
+};
+
+styleIt(dailies);
